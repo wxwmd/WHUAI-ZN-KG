@@ -4,9 +4,6 @@
 <head>
     <meta charset="utf-8">
     <title>疾病自查</title>
-    <meta name="keywords" content="聊天 疾病自查" />
-    <meta name="description" content="聊天室">
-    <meta name="author" content="魏孝文">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <script src="jquery/jquery-3.3.1.min.js"></script>
@@ -14,12 +11,13 @@
     <!-- Theme CSS -->
     <link rel="stylesheet" type="text/css" href="assets/skin/default_skin/css/theme.css">
 
+    <!--图标库-->
+    <link rel="stylesheet" href="lib/font-awesome-4.7.0/css/font-awesome.min.css" media="all">
     <!-- 语音输入css -->
     <link rel="stylesheet" href="./css/base.css">
     <!-- 开发环境版本，包含了有帮助的命令行警告 -->
-    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="./jquery/jquery-3.3.1.min.js"></script>
+    <script src="lib/vue/vue.js"></script>
+    <script src="lib/axios/axios.min.js"></script>
 
 </head>
 
@@ -34,7 +32,7 @@
             </span>
             <span class="panel-title">疾病自查</span>
         </div>
-        <div style="height: 700px ;overflow: auto" id="scroller_content">
+        <div style="height: 500px ;overflow: auto" id="scroller_content">
             <div >
                 <!--这是对话-->
                 <div class="media container"  v-for="(item) in messages">
@@ -82,13 +80,13 @@
             <div class="input-group">
                 <input type="text" class="form-control" placeholder="请输入" v-model="input" @keyup.enter="getInput">
                 <span class="input-group-btn">
-                    <button class="btn btn-default btn-gradient" type="button" id="start-btn">
+                    <button class="btn btn-info btn-gradient" type="button" id="start-btn">
                         <i class="fa fa-microphone" aria-hidden="true"></i>
                         语音输入
                     </button>
                 </span>
                 <span class="input-group-btn">
-                    <button class="btn btn-default btn-gradient" type="button" @click="getInput">
+                    <button class="btn btn-success btn-gradient" type="button" @click="getInput">
                         <i class="fa fa-keyboard-o" aria-hidden="true"></i>
                         键盘输入</button>
                 </span>

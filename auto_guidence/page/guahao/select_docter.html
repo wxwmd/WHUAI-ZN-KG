@@ -51,9 +51,9 @@
             font-size: 14px;
         }
 
-        .welcome-module {
+        .docter-module {
             width: 100%;
-            height: 110px;
+            height: 140px;
         }
 
         .main_btn>p {
@@ -61,37 +61,19 @@
         }
 
     </style>
-    <meta name="keywords" content="Bootstrap 3 Admin Dashboard Template Theme" />
-    <meta name="description" content="AdminDesigns - Bootstrap 3 Admin Dashboard Theme">
-    <meta name="author" content="AdminDesigns">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
+    <script src="../../lib/axios/axios.min.js"></script>
     <script src="../../jquery/jquery-3.3.1.min.js"></script>
     <script src="../../bootstrap/js/bootstrap.min.js"></script>
-
-    <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700'>
-
     <!-- Theme CSS -->
     <link rel="stylesheet" type="text/css" href="../../assets/skin/default_skin/css/theme.css">
-
-    <!-- Admin Forms CSS -->
-    <link rel="stylesheet" type="text/css" href="../../assets/admin-tools/admin-forms/css/admin-forms.min.css">
-
     <!-- Favicon -->
     <link rel="shortcut icon" href="../../assets/img/favicon.ico">
-
     <!-- 开发环境版本，包含了有帮助的命令行警告 -->
-    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-
+    <script src="../../lib/vue/vue.js"></script>
     <script src="../../js/lay-module/layer/layer.js"></script>
-
 </head>
-<body style="background-color: #FFFFFF">
+<body>
 
 
 <!--搜索界面-->
@@ -108,11 +90,9 @@
                             </button>
                         </div>
                         <div class="layui-col-md8 layui-col-md-offset1">
-                            <div class="layui-card">
-                                <div class="layui-card-header">
-                                    <i class="fa fa-pencil icon icon-blue"></i>
-                                    <span class="h4" style="text-align: center">选择医生</span>
-                                </div>
+                            <div style="text-align: center;margin-top: 15px">
+                                <i class="fa fa-pencil icon icon-blue"></i>
+                                <span class="h4" style="text-align: center">选择医生</span>
                             </div>
                         </div>
                     </div>
@@ -137,7 +117,7 @@
                             </div>
                         </div>
                         <div class="layui-card-body">
-                            <div class="welcome-module">
+                            <div class="docter-module">
                                 <div class="layui-row layui-col-space10 layuimini-qiuck">
                                     <div class="layui-col-md1" v-if="index===0">
                                         <img src="../../assets/img/docters/1.jpg" width="100%">
