@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Meta, title, CSS, favicons, etc. -->
+  <meta charset="utf-8">
+  <title>问答界面</title>
+  <meta name="keywords" content="Bootstrap 3 Admin Dashboard Template Theme" />
+  <meta name="description" content="AdminDesigns - Bootstrap 3 Admin Dashboard Theme">
+  <meta name="author" content="AdminDesigns">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
+  <script src="jquery/jquery-3.3.1.min.js"></script>
+  <script src="bootstrap/js/bootstrap.min.js"></script>
+
+  <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700'>
+
+  <!-- Theme CSS -->
+  <link rel="stylesheet" type="text/css" href="assets/skin/default_skin/css/theme.css">
+
+  <!-- Admin Forms CSS -->
+  <link rel="stylesheet" type="text/css" href="assets/admin-tools/admin-forms/css/admin-forms.min.css">
+
+
+    <!-- 语音输入css -->
+    <link rel="stylesheet" href="./css/base.css">
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+  <![endif]-->
+  <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+</head>
+
+<body>
+
+
+<!-- 聊天组件 -->
+<div  class="" style="text-align:center ;height: 100%" id="auto_answer_chat">
+    <div class="panel chat-widget">
+        <div class="panel-heading">
+            <span class="panel-icon">
+              <i class="fa fa-stethoscope"></i>
+            </span>
+            <span class="panel-title">智能问答</span>
+        </div>
+        <div style="height: 700px ;overflow: auto" id="scroller_content">
+            <div >
+                <!--这是对话-->
+                <div class="media container"  v-for="(item) in messages">
+                    <!--机器人说话的部分-->
+                    <div class="pull-left row" v-if="!item.mine">
+                        <div class="media-left">
+                            <a href="#">
+                                <img class="media-object" alt="64x64" src="assets/img/logos/jqr.jpg">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <h5>{{item.text}}</h5>
+                        </div>
+                    </div>
+                    <!--真人说话的部分-->
+                    <div class="pull-right row" v-if="item.mine" style="margin-right: 3rem;">
+                        <div class="media-body">
+                            <h5>{{item.text}}</h5>
+                        </div>
+                        <div class="media-right">
+                            <a href="#">
+                                <img class="media-object" alt="64x64" src="assets/img/avatars/1.jpg">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!--底部输入框-->
+        <div class="panel-footer">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="请输入" v-model="input" @keyup.enter="getInput">
+                <span class="input-group-btn">
+                    <i class="fa fa-microphone" aria-hidden="true"></i>
+                    <button class="btn btn-default btn-gradient" type="button" id="start-btn">
+                        <i class="fa fa-microphone" aria-hidden="true"></i>
+                        语音输入
+                    </button>
+                </span>
+
+                <span class="input-group-btn">
+                    <button class="btn btn-default btn-gradient" type="button" @click="getInput">
+                        <i class="fa fa-keyboard-o" aria-hidden="true"></i>键盘输入
+                    </button>
+                </span>
+            </div>
+        </div>
+
+        <!--最下方显示语音部分-->
+        <section class="fixed-box" id="fixed-box">
+            <div class="fixed-main">
+                <button class="fixed-close" id="close-btn"></button>
+                <div id="fixed-txt">说出你想说的话！</div>
+                <div class="fixed-icon">
+                    <img src="./images/voice.png" alt="" />
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<!-----------------------------语音输入模块----------------------------------->
+<script src="js/crypto-js.min.js"></script>
+<script src="js/voice.js"></script>
+
+<script>
+    window.onload = function () {
+        const startBtn = document.querySelector('#start-btn');
+        const fixedBox = document.querySelector('#fixed-box');
+        const closeBtn = document.querySelector('#close-btn');
+        let times = null;
+
+        // 实例化迅飞语音听写（流式版）WebAPI
+        var voice = new Voice({
+
+            // 服务接口认证信息 注：apiKey 和 apiSecret 的长度都差不多，请要填错哦，！
+            appId: '2cb50bd5',
+            apiSecret: 'OGM2ZmMxZDdmNWViMTBhOTZmZjlmYWQ0',
+            apiKey: '1a06139d0bc7580bbd49f489c7703ff8',
+            // 注：要获取以上3个参数，请到迅飞开放平台：https://www.xfyun.cn/services/voicedictation 【注：这是我的迅飞语音听写（流式版）每天服务量500（也就是调500次），如果你需求里大请购买服务量：https://www.xfyun.cn/services/voicedictation?target=price】
+
+            onWillStatusChange: function (oldStatus, newStatus) {
+                //可以在这里进行页面中一些交互逻辑处理：注：倒计时（语音听写只有60s）,录音的动画，按钮交互等！
+                fixedBox.style.display = 'block';
+            },
+            onTextChange: function (text) {
+                if (!text.endsWith("。")){
+                    //监听识别结果的变化
+                    chat.input=text
+
+                    // 3秒钟内没有说话，就自动关闭
+                    if (text) {
+                        clearTimeout(times);
+                        times = setTimeout(() => {
+                            this.stop()
+                            chat.getInput()
+                            fixedBox.style.display = 'none';
+                        }, 2000);
+                    }
+                }
+            }
+        });
+
+        // 开始识别
+        startBtn['onclick'] = function () {
+            chat.voice_input=true
+            voice.start();
+        };
+
+        // 关闭识别
+        closeBtn['onclick'] = function () {
+            voice.stop();
+            fixedBox.style.display = 'none';
+        };
+    };
+</script>
+<!---------------------------------------------------------------->
+
+<script type="text/javascript" defer>
+    function scroll() {
+        var ele=document.getElementById('scroller_content')
+        ele.scrollTop = ele.scrollHeight;
+    }
+</script>
+<!--
+感冒的多发时期
+感冒的药物
+感冒的临床表现
+-->
+
+<script>
+  var chat=new Vue({
+    el:'#auto_answer_chat',
+    data:{
+      input:'',
+      messages:[
+        {
+          mine:false,
+          text:"欢迎来到智能问答，请问我问题吧"
+        }
+      ]
+    },
+    methods:{
+      getInput:function(){
+        this.messages.push({mine:true,text:this.input});
+        console.log(this.input)
+        this.input='';
+        this.getAnswer();
+      },
+      getAnswer:function (){
+        console.log('开始获取答案')
+        var that=this;
+        var question=this.messages[this.messages.length-1].text;
+        axios.get("http://localhost:8080/answer?text="+question).then(function (response){
+          console.log(response)
+          that.messages.push({mine:false,text:response.data})
+        },function (err){
+          console.log('ops,err')
+          console.log(err)
+        })
+          //回调函数，控制滚动条滚动到最下面
+          this.$nextTick(function () {
+              scroll()
+          })
+      }
+    }
+  })
+</script>
+</body>
+</html>

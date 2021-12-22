@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>支付</title>
+    <link rel="stylesheet" href="../../lib/layui-v2.5.5/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../lib/font-awesome-4.7.0/css/font-awesome.min.css" media="all">
+    <link rel="stylesheet" href="../../css/public.css" media="all">
+    <script src="../../lib/layui-v2.5.5/layui.js"></script>
+
+    <style>
+        .form-item{
+            margin-top: 20px;
+        }
+    </style>
+
+    <style>
+        .layui-card {
+            border: 1px solid #f2f2f2;
+            border-radius: 5px;
+        }
+
+        .icon {
+            margin-right: 10px;
+            color: #1aa094;
+        }
+
+        .icon-blue {
+            color: #1e9fff !important;
+        }
+
+        .layuimini-qiuck-module a i {
+            display: inline-block;
+            width: 100%;
+            height: 60px;
+            line-height: 60px;
+            text-align: center;
+            border-radius: 2px;
+            font-size: 30px;
+            background-color: #F8F8F8;
+            color: #333;
+            transition: all .3s;
+            -webkit-transition: all .3s;
+        }
+
+        .layuimini-qiuck-module a cite {
+            position: relative;
+            top: 2px;
+            display: block;
+            color: #666;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            font-size: 14px;
+        }
+
+        .main_btn>p {
+            height: 40px;
+        }
+
+    </style>
+</head>
+<body>
+
+<script>
+    layui.use('element', function(){
+        var element = layui.element;
+
+        //一些事件触发
+        element.on('tab(demo)', function(data){
+            console.log(data);
+        });
+    });
+</script>
+
+<div class="layuimini-container">
+    <div class="layuimini-main" >
+        <div class="layui-row layui-col-space15">
+            <div class="layui-col-md12">
+                <div class="layui-row">
+                    <div class="layui-col-md1">
+                        <button class="layui-btn layui-btn-checked" onclick="window.location.href='select_docter.html'">
+                            <i class="fa fa-arrow-left"  aria-hidden="true"></i> 返回
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="layuimini-container">
+    <div class="layuimini-main">
+
+        <fieldset class="table-search-fieldset">
+            <div class="layui-tab" lay-filter="demo">
+                <ul class="layui-tab-title">
+                    <li class="layui-this">微信支付</li>
+                    <li>支付宝</li>
+                    <li>网银</li>
+                </ul>
+                <div class="layui-tab-content">
+                    <div class="layui-tab-item layui-show layui-row">
+                        <div class="layui-col-md5">
+                            <h3>应付金额：<font color="red">5.00元</font> </h3>
+                        </div>
+                        <div class="layui-col-md-offset-1 layui-col-md2">
+                            <img src="../../assets/img/pay/wx.png" alt="微信收款码" width="100%">
+                        </div>
+                    </div>
+                    <div class="layui-tab-item layui-row">
+                        <div class="layui-col-md5">
+                            <h3>应付金额：<font color="red">5.00元</font> </h3>
+                        </div>
+                        <div class="layui-col-md-offset-1 layui-col-md2">
+                            <img src="../../assets/img/pay/zfb.jpg" alt="支付宝收款码" width="100%">
+                        </div>
+                    </div>
+                    <div class="layui-tab-item layui-row">
+                        <div class="layui-col-md5">
+                            <h3>应付金额：<font color="red">5.00元</font> </h3>
+                        </div>
+                        <div class="layui-col-md-offset-1 layui-col-md2">
+                            <img src="../../assets/img/pay/wy.jpg" alt="网银收款码" width="100%">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+
+
+        <input type="button" class="layui-btn layui-btn-normal layui-col-md-offset11" style="margin-top: 5px" value="下一步>>" onclick="window.location.href='map_guidance.html'">
+
+    </div>
+</div>
+
+<script src="../../js/lay-module/laydate/laydate.js"></script>
+<script>
+    laydate.render({
+        elem: '#date' //指定元素
+    });
+</script>
+
+</body>
+</html>

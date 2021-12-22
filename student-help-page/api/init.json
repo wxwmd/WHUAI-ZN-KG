@@ -1,0 +1,86 @@
+{
+  "homeInfo": {
+    "title": "主页",
+    "href": "welcome.html"
+  },
+  "logoInfo": {
+    "title": "武汉大学AI LAB",
+    "image": "images/logo.png",
+    "href": ""
+  },
+  "menuInfo": [{
+    "title": "功能管理",
+    "icon": "fa fa-address-book",
+    "href": "",
+    "target": "_self",
+    "child": [{
+        "title": "主页",
+        "href": "welcome.html",
+        "icon": "fa fa-home",
+        "target": "_self"
+      },
+      {
+        "title": "智能搜索",
+        "href": "",
+        "icon": "fa fa-search",
+        "target": "_self",
+        "child": [{
+            "title": "医疗概念智能搜索",
+            "href": "search_gainian.html",
+            "icon": "",
+            "target": "_self"
+          },
+          {
+            "title": "临床指南智能搜索",
+            "href": "search_zhinan.html",
+            "icon": "",
+            "target": "_self"
+          },
+          {
+            "title": "历史问答智能搜索",
+            "href": "search_wenda.html",
+            "icon": "",
+            "target": "_self"
+          },
+          {
+            "title": "医生经验智能搜索",
+            "href": "search_jingyan.html",
+            "icon": "",
+            "target": "_self"
+          }
+        ]
+      },
+      {
+        "title": "医疗能力评估",
+        "href": "",
+        "icon": "fa fa-pencil",
+        "target": "",
+        "child": [{
+            "title": "医学知识测试",
+            "href": "test_knowledge.html",
+            "icon": "",
+            "target": "_self"
+          },
+          {
+            "title": "仿真诊疗",
+            "href": "test_fangzhen.html",
+            "icon": "",
+            "target": "_self"
+          }
+        ]
+      },
+      {
+        "title": "智能问答",
+        "href": "auto_answer.html",
+        "icon": "fa fa-quora",
+        "target": "_self"
+      },
+      {
+        "title": "用户画像",
+        "href": "user_persona.html",
+        "icon": "fa fa-user-plus",
+        "target": "_self"
+      }
+    ]
+  }]
+}

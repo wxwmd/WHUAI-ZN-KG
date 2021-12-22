@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>临床指南搜索</title>
+    <link rel="stylesheet" href="lib/layui-v2.5.5/css/layui.css" media="all">
+    <link rel="stylesheet" href="lib/font-awesome-4.7.0/css/font-awesome.min.css" media="all">
+    <link rel="stylesheet" href="css/public.css" media="all">
+    <style>
+        .layui-card {
+            border: 1px solid #f2f2f2;
+            border-radius: 5px;
+        }
+
+        .icon {
+            margin-right: 10px;
+            color: #1aa094;
+        }
+
+        .icon-blue {
+            color: #1e9fff !important;
+        }
+
+        .layuimini-qiuck-module {
+            margin-top: 10px
+        }
+
+        .layuimini-qiuck-module a i {
+            display: inline-block;
+            width: 100%;
+            height: 60px;
+            line-height: 60px;
+            text-align: center;
+            border-radius: 2px;
+            font-size: 30px;
+            background-color: #F8F8F8;
+            color: #333;
+            transition: all .3s;
+            -webkit-transition: all .3s;
+        }
+
+        .layuimini-qiuck-module a cite {
+            position: relative;
+            top: 2px;
+            display: block;
+            color: #666;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            font-size: 14px;
+        }
+
+        .welcome-module {
+            width: 100%;
+            height: 110px;
+        }
+
+        .main_btn>p {
+            height: 40px;
+        }
+
+    </style>
+    <script src="lib/axios/axios.min.js"></script>
+
+    <script src="jquery/jquery-3.3.1.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" type="text/css" href="assets/skin/default_skin/css/theme.css">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/img/favicon.ico">
+
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="lib/vue/vue.js"></script>
+
+
+</head>
+<body style="background-color: #FFFFFF">
+
+
+
+
+<!--搜索界面-->
+<div id="guide">
+
+    <div class="layuimini-container" id="collection_fangzhen">
+        <div class="layuimini-main" >
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md12">
+                    <div class="layui-row">
+                        <div class="layui-col-md8 layui-col-md-offset2">
+                            <div class="layui-card">
+                                <div class="layui-card-header">
+                                    <i class="fa fa-star icon icon-blue"></i>
+                                    <span class="h4" style="text-align: center">指南收藏</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="layuimini-container" style="background:rgba(255,255,255,0);" v-if="status===1">
+        <div class="layuimini-main">
+            <div class="layui-row layui-col-space15" >
+
+                <div class="layui-col-md8 layui-col-md-offset2" style="background-color: #FFFFFF">
+                    <div class="layui-card" v-for="(item,index) in objects">
+                        <div class="layui-card-header">
+                            <i class="fa fa-book icon icon-blue"></i><a :href="item.地址">{{item.名称}}</a>
+                            <div style="float: right;margin-right: 100px" @click="setStar(index)" >
+                                <i class="fa fa-star fa-lg"  :class="{'text-warning':stars[index]}"></i>
+                            </div>
+                        </div>
+                        <div class="layui-card-body">
+                            <div class="welcome-module">
+                                <div class="layui-row layui-col-space10 layuimini-qiuck">
+                                    <div class="layui-col-md12  layuimini-qiuck-module">
+                                        <span>发布组织：{{item.发布组织}}</span>
+                                        <p>发布时间：{{item.发布时间}}</p>
+                                        <p>介绍：{{item.描述}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<script>
+    var guides=new Vue({
+        el:'#guide',
+        data:{
+            word:'',
+            status:1,
+            stars:[
+                true,
+                true,
+                true
+            ],
+            objects:eval('[{"发布时间":"2021-04-29","名称":"2020 EAU指南：肌层浸润和转移性膀胱癌","地址":"https://www.medsci.cn/guideline/show_article.do?id=165141c00190ae5c","描述":"2020年4月，欧洲泌尿外科学会(EAU)发布了肌层浸润和转移性膀胱癌指南，本文主要概述了更新的肌层浸润和转移性膀胱癌指南的主要内容，涉及诊断和治疗的最新信息，以便纳入临床实践。","发布组织":"欧洲泌尿外科学会"},{"发布时间":"2021-08-15","名称":"2021 CUA指南：非肌层浸润膀胱癌的管理（全文）","地址":"https://www.medsci.cn/guideline/show_article.do?id=8f7131c0022090c0","描述":"2021年8月，加拿大泌尿外科协会(CUA)发布了非肌层浸润性性膀胱癌的管理指南。","发布组织":"加拿大泌尿外科协会"},{"发布时间":"2021-09-09","名称":"2021 EAU指南：非肌层浸润性膀胱癌（Ta，T1和CIS）","地址":"https://www.medsci.cn/guideline/show_article.do?id=f20911c0021860b0","描述":"本文提供了EAU关于非肌层浸润性膀胱癌诊治的最新指导建议，涉及分类、危险因素、诊断、预后因素以及治疗。","发布组织":"欧洲泌尿外科学会"}]')
+        },
+        methods:{
+            setshow:function () {
+                this.status=1
+            },
+            setStar(index){
+                var tmp=!this.stars[index]
+                this.stars.splice(index,1,tmp)
+                console.log(this.stars)
+            }
+        }
+    })
+</script>
+
+</body>
+</html>

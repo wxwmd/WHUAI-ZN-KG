@@ -1,0 +1,42 @@
+{
+  "homeInfo": {
+    "title": "主页",
+    "href": "welcome.html"
+  },
+  "logoInfo": {
+    "title": "武汉大学中南医院",
+    "image": "images/zn.png",
+    "href": ""
+  },
+  "menuInfo": [{
+    "title": "功能管理",
+    "icon": "fa fa-address-book",
+    "href": "",
+    "target": "_self",
+    "child": [{
+        "title": "主页",
+        "href": "welcome.html",
+        "icon": "fa fa-home",
+        "target": "_self"
+      },
+      {
+        "title": "疾病自查",
+        "href": "self_check.html",
+        "icon": "fa fa-stethoscope",
+        "target": "_self"
+      },
+      {
+        "title": "智能问答",
+        "href": "auto_answer.html",
+        "icon": "fa fa-quora",
+        "target": "_self"
+      },
+      {
+        "title": "直接挂号",
+        "href": "fast_guahao.html",
+        "icon": "fa fa-hand-o-up",
+        "target": ""
+      }
+    ]
+  }]
+}

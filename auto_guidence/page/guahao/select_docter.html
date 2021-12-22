@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <title>选择医生</title>
+    <link rel="stylesheet" href="../../lib/layui-v2.5.5/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../lib/font-awesome-4.7.0/css/font-awesome.min.css" media="all">
+    <link rel="stylesheet" href="../../css/public.css" media="all">
+    <style>
+        .layui-card {
+            border: 1px solid #f2f2f2;
+            border-radius: 5px;
+        }
+
+        .icon {
+            margin-right: 10px;
+            color: #1aa094;
+        }
+
+        .icon-blue {
+            color: #1e9fff !important;
+        }
+
+        .layuimini-qiuck-module {
+            margin-top: 10px
+        }
+
+        .layuimini-qiuck-module a i {
+            display: inline-block;
+            width: 100%;
+            height: 60px;
+            line-height: 60px;
+            text-align: center;
+            border-radius: 2px;
+            font-size: 30px;
+            background-color: #F8F8F8;
+            color: #333;
+            transition: all .3s;
+            -webkit-transition: all .3s;
+        }
+
+        .layuimini-qiuck-module a cite {
+            position: relative;
+            top: 2px;
+            display: block;
+            color: #666;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            font-size: 14px;
+        }
+
+        .welcome-module {
+            width: 100%;
+            height: 110px;
+        }
+
+        .main_btn>p {
+            height: 40px;
+        }
+
+    </style>
+    <meta name="keywords" content="Bootstrap 3 Admin Dashboard Template Theme" />
+    <meta name="description" content="AdminDesigns - Bootstrap 3 Admin Dashboard Theme">
+    <meta name="author" content="AdminDesigns">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
+    <script src="../../jquery/jquery-3.3.1.min.js"></script>
+    <script src="../../bootstrap/js/bootstrap.min.js"></script>
+
+    <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700'>
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" type="text/css" href="../../assets/skin/default_skin/css/theme.css">
+
+    <!-- Admin Forms CSS -->
+    <link rel="stylesheet" type="text/css" href="../../assets/admin-tools/admin-forms/css/admin-forms.min.css">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../../assets/img/favicon.ico">
+
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+
+    <script src="../../js/lay-module/layer/layer.js"></script>
+
+</head>
+<body style="background-color: #FFFFFF">
+
+
+<!--搜索界面-->
+<div id="docters_list">
+
+    <div class="layuimini-container">
+        <div class="layuimini-main" >
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md12">
+                    <div class="layui-row">
+                        <div class="layui-col-md1">
+                            <button class="layui-btn layui-btn-checked" onclick="window.location.href='information.html'">
+                                <i class="fa fa-arrow-left"  aria-hidden="true"></i> 返回
+                            </button>
+                        </div>
+                        <div class="layui-col-md8 layui-col-md-offset1">
+                            <div class="layui-card">
+                                <div class="layui-card-header">
+                                    <i class="fa fa-pencil icon icon-blue"></i>
+                                    <span class="h4" style="text-align: center">选择医生</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="layuimini-container" style="background:rgba(255,255,255,0);" v-if="status===1">
+        <div class="layuimini-main">
+            <div class="layui-row layui-col-space15" >
+
+                <div class="layui-col-md8 layui-col-md-offset2" style="background-color: #FFFFFF">
+                    <div class="layui-card" v-for="(item,index) in objects">
+                        <div class="layui-card-header">
+                            <i class="fa fa-user-circle-o icon icon-blue"></i>{{item.姓名}}
+                            <div style="float: right;margin-right: 100px" @click="selectDocter" >
+                                <button class="layui-btn layui-btn-normal layui-col-md-offset11">
+                                    <i class="fa fa-check" aria-hidden="true"></i>
+                                    选择
+                                </button>
+                            </div>
+                        </div>
+                        <div class="layui-card-body">
+                            <div class="welcome-module">
+                                <div class="layui-row layui-col-space10 layuimini-qiuck">
+                                    <div class="layui-col-md1" v-if="index===0">
+                                        <img src="../../assets/img/docters/1.jpg" width="100%">
+                                    </div>
+                                    <div class="layui-col-md1" v-if="index===1">
+                                        <img src="../../assets/img/docters/2.jpg" width="100%">
+                                    </div>
+                                    <div class="layui-col-md1" v-if="index===2">
+                                        <img src="../../assets/img/docters/3.jpg" width="100%">
+                                    </div>
+                                    <div class="layui-col-md11   layuimini-qiuck-module">
+                                        <span>职称：{{item.职称}}</span>
+                                        <p>擅长：{{item.擅长}}</p>
+                                        <p>简介：{{item.简介}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<script>
+    var guides=new Vue({
+        el:'#docters_list',
+        data:{
+            word:'',
+            status:1,
+            stars:[
+                true,
+                true,
+                true
+            ],
+            objects:eval('[{"职称":"副主任医师 / 副教授","姓名":"周学锋","擅长":"尿道下裂、肾积水、输尿管异位开口、重复肾、肾母细胞细胞瘤、肾外伤、隐睾、小儿泌尿系结石，肾发育异常（肾积水、重复肾、肾发育不良等）","简介":"自1984年起从事小儿外科工作。主要从事小儿腹部外科、新生儿外科及小儿泌尿外科临床工作。现专攻小儿泌尿外科多年，尤其擅长小儿泌尿外科疾病的诊断和治疗，如尿道下裂..."},{"职称":"副主任医师","姓名":"饶可","擅长":"排尿功能障碍，前列腺疾病的诊断和治疗以及男性性功能障碍和不育症的诊断及治疗","简介":" 留美医学博士，副主任医师，国际性医学及亚太性医学学会会员，中国医疗保健国际交流促进委员会泌尿生殖医学专业委员会委员。曾赴美国凯斯西储大学医学院做访问学者。长期在..."},{"职称":"主任医师 / 副教授","姓名":"余虓","擅长":"复杂性结石和前列腺增生的微创治疗。尤其擅长经皮肾镜碎石取石术及输尿管软镜取石术等复杂性肾结石的微创手术和前列腺增生的激光剜除手术，以及肾积水和输尿管狭窄的微创手...","简介":"医学博士、硕士生导师。中华医学会泌尿外科分会会员、国际尿石联盟青年委员会委员、湖北省中西医结合泌尿外科分会委员、湖北省泌尿外科分会青年学组秘书，结石学组委员。"}]')
+        },
+        methods:{
+            setshow:function () {
+                this.status=1
+            },
+            setStar(index){
+                var tmp=!this.stars[index]
+                this.stars.splice(index,1,tmp)
+                console.log(this.stars)
+            },selectDocter(){
+                layer.confirm('确定选择？', {
+                    btn: ['确定', '取消'] //可以无限个按钮
+                }, function(index, layero){
+                    window.location.href='order_information.html'
+                }, function(index){
+                    //按钮【按钮二】的回调
+                });
+            }
+        }
+    })
+</script>
+
+</body>
+</html>
