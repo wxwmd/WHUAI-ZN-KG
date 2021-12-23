@@ -189,7 +189,7 @@
         console.log('开始获取答案')
         var that=this;
         var question=this.messages[this.messages.length-1].text;
-        axios.get("http://u27665492r.wicp.vip/answer?text="+question).then(function (response){
+        axios.get("http://localhost:8081/answer?text="+question).then(function (response){
           console.log(response)
           if (response.data===""){
               response.data="对不起，没有找到相应的答案"

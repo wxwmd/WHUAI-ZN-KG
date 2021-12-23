@@ -51,6 +51,7 @@
 
 /*logo字体颜色 headerLogoColor */
 .layui-layout-admin .layuimini-logo h1 {
+    font-size: 13px;
     color: rgb(191, 187, 187);
 }
 

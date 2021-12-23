@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/WHUAI-ZN-KG.iml" filepath="$PROJECT_DIR$/WHUAI-ZN-KG.iml" />
       <module fileurl="file://$PROJECT_DIR$/auto_guidence/auto_guidence.iml" filepath="$PROJECT_DIR$/auto_guidence/auto_guidence.iml" />
+      <module fileurl="file://$USER_HOME$/Desktop/中南医院/辅助医疗决策/cdss/cdss.iml" filepath="$USER_HOME$/Desktop/中南医院/辅助医疗决策/cdss/cdss.iml" />
       <module fileurl="file://$PROJECT_DIR$/student-help-page/student-help-page.iml" filepath="$PROJECT_DIR$/student-help-page/student-help-page.iml" />
     </modules>
   </component>
