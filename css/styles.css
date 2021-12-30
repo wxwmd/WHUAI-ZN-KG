@@ -218,7 +218,7 @@ background: #F39D17;
 color:#F89F9F;	
 	}
 .navbar-inverse .navbar-nav > .active {
-background: #895100;
+background: #3071a9;
 }
 /*  Sliders
 ==================================== */
@@ -866,7 +866,7 @@ margin: 0px;
 }
 #portfolio .filters li a.active {
 	color: #fff !important;
-background: #F39D17; 
+background: #3bafda;
 }
 #portfolio .items {
 	margin-bottom: 0
@@ -1096,7 +1096,7 @@ footer input.form-control{
 	margin-bottom:10px;
 }
 #services, #aboutUs, #work, #plans, #contactUs{
-padding:25px 0;
+padding:0px 0;
 } 
 .heading h2 {
 color: #222;
@@ -1126,7 +1126,7 @@ font-size: 50px;
 	background-size: contain;
 }
 #services, #aboutUs, #wor, #plans, #contactUs{
-padding:5px 0;
+padding:0 0;
 }
 .row .six {
 	width: auto;
@@ -1201,7 +1201,7 @@ width: 100%;
 
 @media (max-width: 480px) {
 .header{
-background:#000;
+background:#0c1037;
 }
 .hero-text2 h3 {
 font-size: 18px;
