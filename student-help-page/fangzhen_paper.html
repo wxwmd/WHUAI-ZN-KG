@@ -176,12 +176,12 @@
                                    </div>
                                </div>
 
-                               <!-- 最终给出诊断结果和治疗方案-->
+                               <!-- 最终给出诊断结果-->
                                <div class=" layui-card" v-if="showCheckRes">
                                    <div class="layui-card-header">
-                                       <span class="h3"><font color="#1e90ff">4. 诊断及治疗</font> </span>
+                                       <span class="h3"><font color="#1e90ff">4. 判断诊断结果</font> </span>
                                        <div style="float: right">
-                                           <button class="btn btn-success" @click="submit()">
+                                           <button class="btn btn-success" @click="submit1()">
                                                <i class="fa fa-check" aria-hidden="true"></i>
                                                <span>提交</span>
                                            </button>
@@ -192,11 +192,40 @@
                                            <span class="input-group-addon" style="margin-left: 20px;">1.</span>
                                            <input type="text"  class="form-control" placeholder="请输入诊断结果">
                                        </div>
-                                       <div class="input-group" style="margin-top: 10px">
-                                           <!--进行TURBT手术，术后即刻行灌注治疗。-->
-                                           <span class="input-group-addon" style="margin-left: 20px;">2.</span>
-                                           <textarea name="keywords" class="layui-textarea" placeholder="请输入治疗方案" style="width: 600px; height: 200px;"></textarea>
+<!--                                       <div class="input-group" style="margin-top: 10px">-->
+<!--                                           &lt;!&ndash;进行TURBT手术，术后即刻行灌注治疗。&ndash;&gt;-->
+<!--                                           <span class="input-group-addon" style="margin-left: 20px;">2.</span>-->
+<!--                                           <textarea name="keywords" class="layui-textarea" placeholder="请输入治疗方案" style="width: 600px; height: 200px;"></textarea>-->
+<!--                                       </div>-->
+                                   </div>
+                               </div>
+
+                               <!--加载动画-->
+                               <!--加载动画效果-->
+                               <div class="container" v-if="checkAnimation1" style="text-align: center">
+                                   <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+                                   <span class="sr-only">Loading...</span>
+                               </div>
+
+                               <!-- 最终给出治疗方案-->
+                               <div class=" layui-card" v-if="showOperation">
+                                   <div class="layui-card-header">
+                                       <span class="h3"><font color="#1e90ff">5. 确定治疗方案</font> </span>
+                                       <div style="float: right">
+                                           <button class="btn btn-success" @click="submit1()">
+                                               <i class="fa fa-check" aria-hidden="true"></i>
+                                               <span>提交</span>
+                                           </button>
                                        </div>
+                                   </div>
+                                   <div class="layui-card-body" >
+                                      <div class="input-group" style="margin-top: 10px">
+                                          <!--进行TURBT手术，术后即刻行灌注治疗。-->
+                                          <span class="input-group-addon" style="margin-left: 20px;">2.</span>
+                                          <textarea name="keywords" class="layui-textarea" placeholder="请输入术前操作" style="width: 600px; height: 200px;"></textarea>
+                                          <textarea name="keywords" class="layui-textarea" placeholder="请输入术中操作" style="width: 600px; height: 200px;"></textarea>
+                                          <textarea name="keywords" class="layui-textarea" placeholder="请输入术后操作" style="width: 600px; height: 200px;"></textarea>
+                                      </div>
                                    </div>
                                </div>
 
@@ -324,15 +353,20 @@
             ],
             checkSubmitted:false,
             checkAnimation:false,
-            showCheckRes:false
+            checkAnimation1:false,
+            showCheckRes:false,
+            showOperation:false
         },
         methods:{
-            submit:function () {
-                layer.open({
-                    title: '提示'
-                    ,content: '确定提交？',
-                });
-                this.submitted=true
+            submit1:function () {
+                // 提交动画
+                var that=this
+                this.checkAnimation1=true
+                setTimeout(function () {
+                    that.checkAnimation1=false
+                    that.showOperation=true
+                },2000)
+                // this.submitted=true
             },
             setCollec:function () {
                 this.collec=!this.collec
