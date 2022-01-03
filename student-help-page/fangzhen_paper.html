@@ -212,7 +212,7 @@
                                    <div class="layui-card-header">
                                        <span class="h3"><font color="#1e90ff">5. 确定治疗方案</font> </span>
                                        <div style="float: right">
-                                           <button class="btn btn-success" @click="submit1()">
+                                           <button class="btn btn-success" @click="submit2()">
                                                <i class="fa fa-check" aria-hidden="true"></i>
                                                <span>提交</span>
                                            </button>
@@ -221,11 +221,21 @@
                                    <div class="layui-card-body" >
                                       <div class="input-group" style="margin-top: 10px">
                                           <!--进行TURBT手术，术后即刻行灌注治疗。-->
-                                          <span class="input-group-addon" style="margin-left: 20px;">2.</span>
-                                          <textarea name="keywords" class="layui-textarea" placeholder="请输入术前操作" style="width: 600px; height: 200px;"></textarea>
-                                          <textarea name="keywords" class="layui-textarea" placeholder="请输入术中操作" style="width: 600px; height: 200px;"></textarea>
-                                          <textarea name="keywords" class="layui-textarea" placeholder="请输入术后操作" style="width: 600px; height: 200px;"></textarea>
+                                          <span class="input-group-addon" style="margin-left: 5%;">1.请输入术前操作</span>
+                                          <textarea name="keywords" class="layui-textarea" placeholder="" style="width: 90%; height: 80px;"></textarea>
                                       </div>
+
+                                       <div class="input-group" style="margin-top: 10px">
+                                           <!--进行TURBT手术，术后即刻行灌注治疗。-->
+                                           <span class="input-group-addon" style="margin-left: 5%;">2.请输入术中操作</span>
+                                           <textarea name="keywords" class="layui-textarea" placeholder="" style="width: 90%; height: 80px;"></textarea>
+                                       </div>
+
+                                       <div class="input-group" style="margin-top: 10px">
+                                           <!--进行TURBT手术，术后即刻行灌注治疗。-->
+                                           <span class="input-group-addon" style="margin-left: 5%;">3.请输入术后操作</span>
+                                           <textarea name="keywords" class="layui-textarea" placeholder="" style="width: 90%; height: 80px;"></textarea>
+                                       </div>
                                    </div>
                                </div>
 
@@ -271,7 +281,11 @@
                                 </tr>
                                 <tr>
                                     <td>治疗方案</td>
-                                    <td>术前新辅助化疗（GC方案）联合免疫治疗（ICI）：吉西他滨，第1、8天；顺铂, 第2天+百泽安（替雷利珠单抗） 200mg IV，第8天，共4个周期。</td>
+                                    <td>
+                                        <p>术前操作：术前新辅助化疗（GC方案）联合免疫治疗（ICI）：吉西他滨，第1、8天；顺铂, 第2天+百泽安（替雷利珠单抗） 200mg IV，第8天，共4个周期。</p>
+                                        <p>术中操作：对怀疑有多发性肿瘤、CIS、高级别肿瘤的患者，或尿细胞学检查阳性但普通膀胱镜检查正常时，若设备、操作人员条件允许，可采用荧光或窄谱光成像引导下TURBT。</p>
+                                        <p>术后操作：继续按原方案（GC+百泽安）治疗，完成6个疗程，后单药用百泽安维持至一年，密切观察，每2个疗程评估一次。</p>
+                                    </td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -288,10 +302,22 @@
                                 </colgroup>
                                 <tbody>
                                 <tr>
-                                    <td>文本标注</td>
+                                    <td>术前操作</td>
+                                    <td>
+                                        <span class="font-green" >术前新辅助化疗（GC方案）联合免疫治疗（ICI）：吉西他滨，第1、8天；顺铂, 第2天+百泽安（替雷利珠单抗） 200mg IV，第8天，共4个周期。</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>术中操作</td>
                                     <td>
                                         <span class="font-green" >进行TURBT手术，</span>
                                         <span class="font-red">术后即刻行灌注治疗。</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>术后操作</td>
+                                    <td>
+                                        <span class="font-green" >继续按原方案（GC+百泽安）治疗，完成6个疗程，后单药用百泽安维持至一年，密切观察，每2个疗程评估一次。</span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -365,8 +391,19 @@
                 setTimeout(function () {
                     that.checkAnimation1=false
                     that.showOperation=true
+                    layer.open({
+                        title: '提示'
+                        ,content: '诊断正确，请给出治疗方案',
+                    });
                 },2000)
                 // this.submitted=true
+            },
+            submit2:function () {
+                layer.open({
+                    title:'确定提交？',
+                    btn:['确定','取消']
+                })
+                this.submitted=true
             },
             setCollec:function () {
                 this.collec=!this.collec
