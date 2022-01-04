@@ -120,7 +120,7 @@
                                     <span style="margin-left: 10px">已选择：{{num}}题</span>
                                 </span>
                                 <span class="col-md-offset-7">
-                                    <button class="btn btn-success" style="" onclick="window.location.href='knowledge_paper.html'">
+                                    <button class="btn btn-success" @click="submit">
                                         开始考试
                                     </button>
                                 </span>
@@ -304,20 +304,25 @@
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
-
-
                 </div>
-
             </div>
-
-
         </div>
     </div>
 </div>
 
+<div class="row" id="animation" style="opacity: 0">
+    <div class="col-md-4 col-md-offset-1">
+        <div>
+            <!--检查结果-->
+            <!--加载动画效果-->
+            <div class="container" v-if="checkAnimation" style="text-align: center">
+                <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+                <p class="h4">生成个性化试题中……</p>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 <script>
@@ -334,6 +339,16 @@
             setnum:function (num1) {
                 this.num=num1
 
+            },
+            submit:function () {
+                var main = document.getElementById("test_knowledge_paper");
+                main.style.opacity=".4"
+                var animation=document.getElementById("animation")
+                animation.style.opacity="1"
+                var that=this
+                setTimeout(function () {
+                    window.location.href='knowledge_paper.html'
+                },3000)
             }
         }
     })

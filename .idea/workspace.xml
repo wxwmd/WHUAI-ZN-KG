@@ -5,8 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e9e4c886-af10-4ea8-82f1-d3e3a3a147a7" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/images/bg.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/student-help-page/fangzhen_paper.html" beforeDir="false" afterPath="$PROJECT_DIR$/student-help-page/fangzhen_paper.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/student-help-page/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/student-help-page/test.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/student-help-page/test_fangzhen.html" beforeDir="false" afterPath="$PROJECT_DIR$/student-help-page/test_fangzhen.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/student-help-page/test_knowledge.html" beforeDir="false" afterPath="$PROJECT_DIR$/student-help-page/test_knowledge.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +73,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8 (1)" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/student-help-page/images" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/中南医院/辅助医疗决策" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.12706482" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -123,7 +129,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />

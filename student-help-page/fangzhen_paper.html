@@ -148,7 +148,7 @@
                                <!--加载动画效果-->
                                <div class="container" v-if="checkAnimation" style="text-align: center">
                                    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
-                                   <span class="sr-only">Loading...</span>
+                                   <p class="h4">生成检查结果中……</p>
                                </div>
                                <div class="layui-card" v-if="showCheckRes">
                                    <div class="layui-card-header">
@@ -192,11 +192,6 @@
                                            <span class="input-group-addon" style="margin-left: 20px;">1.</span>
                                            <input type="text"  class="form-control" placeholder="请输入诊断结果">
                                        </div>
-<!--                                       <div class="input-group" style="margin-top: 10px">-->
-<!--                                           &lt;!&ndash;进行TURBT手术，术后即刻行灌注治疗。&ndash;&gt;-->
-<!--                                           <span class="input-group-addon" style="margin-left: 20px;">2.</span>-->
-<!--                                           <textarea name="keywords" class="layui-textarea" placeholder="请输入治疗方案" style="width: 600px; height: 200px;"></textarea>-->
-<!--                                       </div>-->
                                    </div>
                                </div>
 
@@ -204,7 +199,7 @@
                                <!--加载动画效果-->
                                <div class="container" v-if="checkAnimation1" style="text-align: center">
                                    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
-                                   <span class="sr-only">Loading...</span>
+                                   <p class="h4">验证结果中……</p>
                                </div>
 
                                <!-- 最终给出治疗方案-->
@@ -249,8 +244,13 @@
                             <span id="time"></span>
                         </button>
                     </div>
+                </div>
 
-
+                <!--加载动画-->
+                <!--加载动画效果-->
+                <div class="container" v-if="checkAnimation2" style="text-align: center">
+                    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+                    <p class="h4">结果分析中……</p>
                 </div>
 
                 <!--批改部分-->
@@ -380,6 +380,7 @@
             checkSubmitted:false,
             checkAnimation:false,
             checkAnimation1:false,
+            checkAnimation2:false,
             showCheckRes:false,
             showOperation:false
         },
@@ -395,15 +396,19 @@
                         title: '提示'
                         ,content: '诊断正确，请给出治疗方案',
                     });
-                },2000)
+                },3000)
                 // this.submitted=true
             },
             submit2:function () {
-                layer.open({
-                    title:'确定提交？',
-                    btn:['确定','取消']
-                })
-                this.submitted=true
+                layer.confirm('确认提交？', {
+                    btn: ['确认', '取消'] //可以无限个按钮
+                });
+                var that=this
+                this.checkAnimation2=true
+                setTimeout(function () {
+                    that.checkAnimation2=false
+                    that.submitted=true
+                },5000)
             },
             setCollec:function () {
                 this.collec=!this.collec
@@ -424,8 +429,7 @@
                 setTimeout(function () {
                     that.checkAnimation=false
                     that.showCheckRes=true
-                },2000)
-
+                },3000)
             }
         }
     })
